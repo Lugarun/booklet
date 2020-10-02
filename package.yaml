@@ -1,0 +1,19 @@
+dependencies:
+  - base
+  - hakyll
+  - filepath
+
+executables:
+  site:
+    main: site.hs
+    source-dirs:
+      - src
+    ghc-options:
+    - -Wall
+    - -Wcompat
+    - -Wincomplete-record-updates
+    - -Wincomplete-uni-patterns
+    - -Wredundant-constraints
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
