@@ -4,11 +4,18 @@ import Hakyll
 import BetterRelativizeUrls
 
 
+wikiMatcher :: Pattern
+wikiMatcher = ( "content/research/wiki/*"
+           .||. "content/research/resources/*.md"
+           .||. "content/school/wiki/*"
+           .||. "content/career/wiki/*"
+           .||. "content/finances/wiki/*"
+           .||. "content/blog/wiki/*")
 
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
-    match ("content/wiki/*" .||. "content/papers/*.md") $ do
+    match wikiMatcher $ do
         route $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "style/templates/post.html" defaultContext
@@ -16,7 +23,7 @@ main = hakyll $ do
             >>= relativizeUrls
             >>= transformLinkExtensions
 
-    match "content/papers/*.pdf" $ do
+    match "content/research/resources/*.pdf" $ do
         route idRoute
         compile copyFileCompiler
 
@@ -37,7 +44,7 @@ main = hakyll $ do
         route $ setExtension "html"
         let wikiCtx =
               defaultContext <>
-              listField "posts" defaultContext (loadAll "content/wiki/*")
+              listField "posts" defaultContext (loadAll wikiMatcher)
 
         compile $ pandocCompiler
                 >>= loadAndApplyTemplate "style/templates/wikiList.html" wikiCtx

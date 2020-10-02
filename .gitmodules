@@ -1,0 +1,15 @@
+[submodule "content/research"]
+	path = content/research
+	url = git@bitbucket.org:Lugarun/research.git
+[submodule "content/career"]
+	path = content/career
+	url = git@github.com:Lugarun/Career-Managment.git
+[submodule "content/finances"]
+	path = content/finances
+	url = git@github.com:Lugarun/finances.git
+[submodule "content/blog"]
+	path = content/blog
+	url = git@github.com:Lugarun/blog.git
+[submodule "content/school"]
+	path = content/school
+	url = git@github.com:Lugarun/school.git
