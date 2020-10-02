@@ -3,5 +3,5 @@ _cache
 stack.yaml.lock
 .stack-work
 booklet.cabal
-content/papers
+content/papers/*.pdf
 
