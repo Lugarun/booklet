@@ -13,3 +13,6 @@
 [submodule "content/school"]
 	path = content/school
 	url = git@github.com:Lugarun/school.git
+[submodule "content/notes"]
+	path = content/notes
+	url = git@github.com:Lugarun/notes.git

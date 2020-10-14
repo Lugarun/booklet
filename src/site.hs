@@ -9,6 +9,7 @@ wikiMatcher = ( "content/research/wiki/*"
            .||. "content/research/resources/*.md"
            .||. "content/school/wiki/*"
            .||. "content/career/wiki/*"
+           .||. "content/notes/wiki/*"
            .||. "content/finances/wiki/*"
            .||. "content/blog/wiki/*")
 
