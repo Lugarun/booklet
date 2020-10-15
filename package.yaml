@@ -2,6 +2,7 @@ dependencies:
   - base
   - hakyll
   - filepath
+  - pandoc
 
 executables:
   site:

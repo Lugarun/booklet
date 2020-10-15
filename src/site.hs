@@ -2,6 +2,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 import Hakyll
 import BetterRelativizeUrls
+import Text.Pandoc.Options
 
 
 wikiMatcher :: Pattern
@@ -14,11 +15,23 @@ wikiMatcher = ( "content/research/wiki/*"
            .||. "content/blog/wiki/*")
 
 --------------------------------------------------------------------------------
+
+mathPandocCompiler =
+  let defaultExtensions = defaultHakyllWriterOptions
+      writerOptions = defaultHakyllWriterOptions
+                        { writerExtensions = (writerExtensions defaultHakyllWriterOptions)
+                        , writerHTMLMathMethod = MathJax ""
+                        }
+  in pandocCompilerWith defaultHakyllReaderOptions writerOptions
+
+
+
+--------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
     match wikiMatcher $ do
         route $ setExtension "html"
-        compile $ pandocCompiler
+        compile $ mathPandocCompiler
             >>= loadAndApplyTemplate "style/templates/post.html" defaultContext
             >>= loadAndApplyTemplate "style/templates/default.html" defaultContext
             >>= relativizeUrls
